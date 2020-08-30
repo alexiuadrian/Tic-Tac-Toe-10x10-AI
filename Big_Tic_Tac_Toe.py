@@ -6,28 +6,8 @@ def check_position(matr, linie1, coloana1, linie2, coloana2):
         check_0 = False
         # Cauta daca exista minim un X si un 0 pe langa placuta
 
-
-        # # Verific daca se afla pe prima linie
-        # if min(linie1, linie2) == 0:
-        #     # Verific daca cele doua elemente sunt pe aceeasi linie
-        #     if linie1 == linie2:
-        #         # Verific daca sunt primele de pe linie
-        #         if min(coloana1, coloana2) == 0 and max(coloana1, coloana2) == 1:
-        #             # Verific daca sub ele, pe diagonala sau in dreapta exista cel putin un X
-        #             if matr[11] == 'x' or matr[12] == 'x' or matr[13] == 'x' or matr[2] == 'x':
-        #                 check_X = True
-        #             # Verific daca sub ele, pe diagonala sau in dreapta exista cel putin un 0
-        #             if matr[11] == '0' or matr[12] == '0' or matr[13] == '0' or matr[2] == '0':
-        #                 check_0 = True
-        #             if check_X and check_0:
-        #                 return True
-        #         else:
-        #             # Verific daca in stanga, sub ele, pe diagonala sau in dreapta exista cel putin un X
-        #             if matr[linie1 * 10 + ]
-
         # Verific daca sunt pe orizontala
         if linie1 == linie2:
-            print("Sunt pe orizontala")
             # Verific daca sunt pe prima linie
             if linie1 == 0:
                 # Verific daca sunt in stanga de tot
@@ -110,7 +90,6 @@ def check_position(matr, linie1, coloana1, linie2, coloana2):
 
             # Daca sunt pe linii intermediare
             else:
-                print("Sunt pe linii intermediare")
                 # Verific daca sunt in stanga de tot
                 if min(coloana1, coloana2) == 0:
                     # Verific vecinii de deasupra, diagonala dreapta sus, dreapta, diagonala dreapta jos, dedesubtul placutei (daca cel putin unul este x)
@@ -138,7 +117,6 @@ def check_position(matr, linie1, coloana1, linie2, coloana2):
                         return True
                 
                 else:
-                    print("Sunt in mijlocul tablei")
                     # Verific vecinii: stanga, diagonala stanga, dedesubt, diagonala dreapta, dreapta daca e cel putin un x
                     if matr[linie1 * 10 + min(coloana1, coloana2) - 1] == 'x' or matr[(linie1 + 1) * 10 + min(coloana1, coloana2) - 1] == 'x' or matr[(linie1 + 1) * 10 + min(coloana1, coloana2)] == 'x' or matr[(linie1 + 1) * 10 + max(coloana1, coloana2)] == 'x' or matr[(linie1 + 1) * 10 + max(coloana1, coloana2) + 1] == 'x' or matr[linie1 * 10 + max(coloana1, coloana2) + 1] == 'x' or matr[(linie1 - 1) * 10 + max(coloana1, coloana2) + 1] == 'x' or matr[(linie1 - 1) * 10 + max(coloana1, coloana2)] == 'x' or matr[(linie1 - 1) * 10 + min(coloana1, coloana2)] == 'x' or matr[(linie1 - 1) * 10 + min(coloana1, coloana2) - 1] == 'x':
                         check_X = True
@@ -157,11 +135,11 @@ def check_position(matr, linie1, coloana1, linie2, coloana2):
                 # Verific daca sunt in stanga de tot
                 if min(coloana1, coloana2) == 0:
                     # Verific vecinii de dedesubtul, diagonala dreapta si dreapta placutei (daca cel putin unul este x)
-                    if matr[20] == 'x' or matr[21] == 'x' or matr[2] == 'x' or matr[12] == 'x':
+                    if matr[20] == 'x' or matr[21] == 'x' or matr[1] == 'x' or matr[11] == 'x':
                         check_X = True
                     
                     # Verific vecinii de dedesubtul, diagonala dreapta si dreapta placutei (daca cel putin unul este 0)
-                    if matr[20] == '0' or matr[21] == '0' or matr[2] == '0' or matr[12] == '0':
+                    if matr[20] == '0' or matr[21] == '0' or matr[1] == '0' or matr[11] == '0':
                         check_0 = True
 
                     if check_X and check_0:
@@ -182,11 +160,11 @@ def check_position(matr, linie1, coloana1, linie2, coloana2):
                 
                 else:
                     # Verific vecinii: stanga, diagonala stanga, dedesubt, diagonala dreapta, dreapta daca e cel putin un x
-                    if matr[min(coloana1, coloana2) - 1] == 'x' or matr[10 + min(coloana1, coloana2) - 1] == 'x' or matr[10 + min(coloana1, coloana2) - 1] == 'x' or matr[20 + coloana1 - 1] or matr[20 + min(coloana1, coloana2)] == 'x' or matr[20 + max(coloana1, coloana2) + 1] == 'x' or matr[max(coloana1, coloana2) + 1] == 'x' or matr[10 + max(coloana1, coloana2) + 1]:
+                    if matr[min(coloana1, coloana2) - 1] == 'x' or matr[10 + min(coloana1, coloana2) - 1] == 'x' or matr[20 + min(coloana1, coloana2) - 1] == 'x' or matr[20 + min(coloana1, coloana2)] == 'x' or matr[20 + max(coloana1, coloana2) + 1] == 'x' or matr[max(coloana1, coloana2) + 1] == 'x' or matr[10 + max(coloana1, coloana2) + 1] == 'x':
                         check_X = True
 
                     # Verific vecinii: stanga, diagonala stanga, dedesubt, diagonala dreapta, dreapta daca e cel putin un 0
-                    if matr[min(coloana1, coloana2) - 1] == '0' or matr[10 + min(coloana1, coloana2) - 1] == '0' or matr[10 + min(coloana1, coloana2) - 1] == '0' or matr[20 + coloana1 - 1] or matr[20 + min(coloana1, coloana2)] == '0' or matr[20 + max(coloana1, coloana2) + 1] == '0' or matr[max(coloana1, coloana2) + 1] == '0' or matr[10 + max(coloana1, coloana2) + 1]:
+                    if matr[min(coloana1, coloana2) - 1] == '0' or matr[10 + min(coloana1, coloana2) - 1] == '0' or matr[20 + min(coloana1, coloana2) - 1] == '0' or matr[20 + min(coloana1, coloana2)] == '0' or matr[20 + max(coloana1, coloana2) + 1] == '0' or matr[max(coloana1, coloana2) + 1] == '0' or matr[10 + max(coloana1, coloana2) + 1] == '0':
                         check_0 = True
 
                     if check_X and check_0:
@@ -276,29 +254,37 @@ def check_position(matr, linie1, coloana1, linie2, coloana2):
         return False
         
 
-def modif_joc(matr1, index, simbol):
+def modif_joc(matr1, index1, index2, simbol):
     joc_generat = Joc()
     for i in range(0, len(matr1)):
         joc_generat.matr[i] = matr1[i]
-    joc_generat.matr[index] = simbol
+    joc_generat.matr[index1] = simbol
+    joc_generat.matr[index2] = simbol
     return joc_generat
 
 
+# Primeste o lista si returneaza numarul de puncte pentru fiecare simbol
 def elem_identice(lista):
-    """ Primeste o lista si returneaza
-	-> simbolul jucatorului castigator (daca lista contine doar acel simbol repetat)
-	-> sau False (daca a fost remiza sau daca nu s-a terminat jocul)
-	"""
-    mt = set(lista)
-    if len(mt) == 1:
-        castigator = list(mt)[0]
-        if castigator != Joc.GOL:
-            return castigator
-        else:
-            return False
-    else:
-        return False
+    score_x = 0
+    score_0 = 0
 
+    for index in range(0, len(lista) - 3):
+        if lista[index] == lista[index + 1] == lista[index + 2]:
+            if lista[index] != '#':    
+                if lista[index] == 'x':
+                    score_x = score_x + 1
+                elif lista[index] == '0':
+                    score_0 = score_0 + 1
+    
+    if len(lista) - 3 == 0:
+        if lista[0] == lista[1] == lista[2]:
+            if lista[0] != '#':
+                if lista[0] == 'x':
+                    score_x = score_x + 1
+                elif lista[0] == '0':
+                    score_0 = score_0 + 1
+
+    return score_x, score_0
 
 class Joc:
     """
@@ -309,6 +295,8 @@ class Joc:
     JMIN = None
     JMAX = None
     GOL = '#'
+    SCOR_X = 0
+    SCOR_0 = 0
 
     def __init__(self, tabla=None):
         if tabla is not None:
@@ -321,78 +309,277 @@ class Joc:
             self.matr[5 * 10 + 5] = '0'
 
     def final(self):
-        # Folosim slice-uri pe lista de 9 elemente
-        # pentru a gasi usor cele 3 linii, 3 coloane si 2 diagonale
-        # si a verifica daca a castigat cineva (return simbolul castigatorului),
-        # daca a fost remiza (return "remiza"),
-        # sau daca nu s-a terminat jocul (return False)
-        rez = (elem_identice(self.matr[0:3])
-               or elem_identice(self.matr[3:6])
-               or elem_identice(self.matr[6:9])
-               or elem_identice(self.matr[0:9:3])
-               or elem_identice(self.matr[1:9:3])
-               or elem_identice(self.matr[2:9:3])
-               or elem_identice(self.matr[0:9:4])
-               or elem_identice(self.matr[2:8:2]))
-        if (rez):
-            return rez
-        elif Joc.GOL not in self.matr:
-            return 'remiza'
+        # Updatez scorul pentru fiecare diagonala
+
+        rezultate_x, rezultate_0 = elem_identice(self.matr[0:100:11])
+
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+
+        rezultate_x, rezultate_0 = elem_identice(self.matr[10:99:11])
+        
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+
+        rezultate_x, rezultate_0 = elem_identice(self.matr[20:98:11])
+        
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+        
+        rezultate_x, rezultate_0 = elem_identice(self.matr[30:97:11])
+        
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+
+        rezultate_x, rezultate_0 = elem_identice(self.matr[40:96:11])
+
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+        
+        rezultate_x, rezultate_0 = elem_identice(self.matr[50:95:11])
+        
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0        
+        
+        rezultate_x, rezultate_0 = elem_identice(self.matr[60:94:11])
+
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+        
+        rezultate_x, rezultate_0 = elem_identice(self.matr[70:93:11])
+
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+
+        rezultate_x, rezultate_0 = elem_identice(self.matr[70:93:11])
+
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+
+        rezultate_x, rezultate_0 = elem_identice(self.matr[1:90:11])
+
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+
+        rezultate_x, rezultate_0 = elem_identice(self.matr[2:80:11])
+
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+
+        rezultate_x, rezultate_0 = elem_identice(self.matr[3:70:11])
+
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+
+        rezultate_x, rezultate_0 = elem_identice(self.matr[4:60:11])
+
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+
+        rezultate_x, rezultate_0 = elem_identice(self.matr[5:50:11])
+
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+
+        rezultate_x, rezultate_0 = elem_identice(self.matr[6:40:11])
+
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+
+        rezultate_x, rezultate_0 = elem_identice(self.matr[7:30:9])
+
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+        
+        rezultate_x, rezultate_0 = elem_identice(self.matr[2:21:9])
+
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+
+        rezultate_x, rezultate_0 = elem_identice(self.matr[3:31:9])
+
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+        
+        rezultate_x, rezultate_0 = elem_identice(self.matr[4:41:9])
+
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+
+        rezultate_x, rezultate_0 = elem_identice(self.matr[5:51:9])
+
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+        
+        rezultate_x, rezultate_0 = elem_identice(self.matr[6:61:9])
+
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+
+        rezultate_x, rezultate_0 = elem_identice(self.matr[7:71:9])
+
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+        
+        rezultate_x, rezultate_0 = elem_identice(self.matr[8:81:9])
+
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+
+        rezultate_x, rezultate_0 = elem_identice(self.matr[9:91:9])
+
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+
+        rezultate_x, rezultate_0 = elem_identice(self.matr[19:92:9])
+
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+
+        rezultate_x, rezultate_0 = elem_identice(self.matr[29:93:9])
+
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+
+        rezultate_x, rezultate_0 = elem_identice(self.matr[39:94:9])
+
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+
+        rezultate_x, rezultate_0 = elem_identice(self.matr[49:95:9])
+
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+
+        rezultate_x, rezultate_0 = elem_identice(self.matr[59:96:9])
+
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+
+        rezultate_x, rezultate_0 = elem_identice(self.matr[69:97:9])
+
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+
+        rezultate_x, rezultate_0 = elem_identice(self.matr[79:98:9])
+
+        self.SCOR_X = self.SCOR_X + rezultate_x
+        self.SCOR_0 = self.SCOR_0 + rezultate_0
+
+        # Verific daca mai exista locuri de adaugat placute
+
+        for i in range(0, 10):
+            for j in range(0, 9):
+                if check_position(self.matr, i, j, i, j + 1):
+                    return False
+        
+        for i in range(0, 9):
+            for j in range(0, 10):
+                if check_position(self.matr, i, j, i + 1, j):
+                    return False
+
+        # Daca am ajuns aici inseamna ca nu se mai pot adauga placute deci se opreste jocul
+        # Returnez simbolul jucatorului cu mai multe puncte sau remiza in caz de egalitate
+
+        if self.SCOR_X > self.SCOR_0:
+            return self.SCOR_X
+        elif self.SCOR_0 > self.SCOR_X:
+            return self.SCOR_0
         else:
-            return False
+            return 'remiza'
+        
+
 
     def mutari_joc(self, jucator):
-        """
-		Pentru configuratia curenta de joc "self.matr" (de tip lista, cu 9 elemente),
-		trebuie sa returnati o lista "l_mutari" cu elemente de tip Joc,
-		corespunzatoare tuturor configuratiilor-succesor posibile.
-
-		"jucator" este simbolul jucatorului care face mutarea
-		"""
         l_mutari = []
 
-        ### TO DO ...
+        for i in range(0, 10):
+            for j in range(0, 9):
+                if self.matr[i * 10 + j] == self.matr[i * 10 + j + 1] == '#' and check_position(self.matr, i, j, i, (j + 1)):
+                    l_mutari.append(modif_joc(self.matr, (i * 10 + j), (i * 10 + j + 1), jucator))
 
-        # locuri_libere = []
-
-        for i in range(0, len(self.matr)):
-            if self.matr[i] == '#':
-                l_mutari.append(modif_joc(self.matr, i, jucator))
+        for i in range(0, 9):
+            for j in range(0, 10):
+                if self.matr[i * 10 + j] == self.matr[(i + 1) * 10 + j] == '#' and check_position(self.matr, i, j, (i + 1), j):
+                    l_mutari.append(modif_joc(self.matr, (i * 10 + j), ((i + 1) * 10 + j), jucator))
 
         return l_mutari
 
     # linie deschisa inseamna linie pe care jucatorul mai poate forma o configuratie castigatoare
     def linie_deschisa(self, lista, jucator):
-        """
-		# rezolvare alternativa:
-		juc_opus = 'x' if jucator=='0' else '0'
-		if juc_opus in lista:
-			return 0
-		return 1
-		"""
 
-        # obtin multimea simbolurilor de pe linie
-        mt = set(lista)
-        # verific daca sunt maxim 2 simboluri
-        if len(mt) <= 2:
-            # daca multimea simbolurilor nu are alte simboluri decat pentru cel de "gol" si jucatorul curent
-            if mt <= {Joc.GOL, jucator}:  # incluziune de seturi
-                # inseamna ca linia este deschisa
-                return 1
+        for i in range(0, len(lista) - 3):
+            x = []
+            x.append(lista[i])
+            x.append(lista[i + 1])
+            x.append(lista[i + 2])
+
+            # obtin multimea simbolurilor de pe linie
+            mt = set(x)
+            # verific daca sunt maxim 2 simboluri
+            if len(mt) <= 2:
+                # daca multimea simbolurilor nu are alte simboluri decat pentru cel de "gol" si jucatorul curent
+                if mt <= {Joc.GOL, jucator}:  # incluziune de seturi
+                    # inseamna ca linia este deschisa
+                    return 1
+                else:
+                    return 0
             else:
                 return 0
-        else:
-            return 0
+            
 
+        if len(lista) - 3 == 0:
+            x = []
+            x.append(lista[0])
+            x.append(lista[1])
+            x.append(lista[2])
+
+            # obtin multimea simbolurilor de pe linie
+            mt = set(x)
+            # verific daca sunt maxim 2 simboluri
+            if len(mt) <= 2:
+                # daca multimea simbolurilor nu are alte simboluri decat pentru cel de "gol" si jucatorul curent
+                if mt <= {Joc.GOL, jucator}:  # incluziune de seturi
+                    # inseamna ca linia este deschisa
+                    return 1
+                else:
+                    return 0
+            else:
+                return 0
+
+    # Voi verifica pentru fiecare diagonala in parte (de minim 3 elemente)
     def linii_deschise(self, jucator):
-        return (self.linie_deschisa(self.matr[0:3], jucator)
-				+ self.linie_deschisa(self.matr[3:6], jucator)
-				+ self.linie_deschisa(self.matr[6:9], jucator)
-				+ self.linie_deschisa(self.matr[0:9:3], jucator)
-				+ self.linie_deschisa(self.matr[1:9:3], jucator)
-				+ self.linie_deschisa(self.matr[2:9:3], jucator)
-				+ self.linie_deschisa(self.matr[0:9:4], jucator)  # prima diagonala
-				+ self.linie_deschisa(self.matr[2:8:2], jucator))  # a doua diagonala
+        return (self.linie_deschisa(self.matr[0:100:11], jucator)
+				+ self.linie_deschisa(self.matr[10:100:11], jucator)
+				+ self.linie_deschisa(self.matr[20:98:11], jucator)
+				+ self.linie_deschisa(self.matr[30:97:11], jucator)
+				+ self.linie_deschisa(self.matr[40:96:11], jucator)
+				+ self.linie_deschisa(self.matr[50:95:11], jucator)
+				+ self.linie_deschisa(self.matr[60:94:11], jucator)
+				+ self.linie_deschisa(self.matr[70:93:11], jucator)
+                + self.linie_deschisa(self.matr[1:90:11], jucator)
+                + self.linie_deschisa(self.matr[2:80:11], jucator)
+                + self.linie_deschisa(self.matr[3:70:11], jucator)
+                + self.linie_deschisa(self.matr[4:60:11], jucator)
+                + self.linie_deschisa(self.matr[5:50:11], jucator)
+                + self.linie_deschisa(self.matr[6:40:11], jucator)
+                + self.linie_deschisa(self.matr[7:30:11], jucator)
+                + self.linie_deschisa(self.matr[2:21:9], jucator)
+                + self.linie_deschisa(self.matr[3:31:9], jucator)
+                + self.linie_deschisa(self.matr[4:41:9], jucator)
+                + self.linie_deschisa(self.matr[5:51:9], jucator)
+                + self.linie_deschisa(self.matr[6:61:9], jucator)
+                + self.linie_deschisa(self.matr[7:71:9], jucator)
+                + self.linie_deschisa(self.matr[8:81:9], jucator)
+                + self.linie_deschisa(self.matr[9:91:9], jucator)
+                + self.linie_deschisa(self.matr[19:92:9], jucator)
+                + self.linie_deschisa(self.matr[29:93:9], jucator)
+                + self.linie_deschisa(self.matr[39:94:9], jucator)
+                + self.linie_deschisa(self.matr[49:95:9], jucator)
+                + self.linie_deschisa(self.matr[59:96:9], jucator)
+                + self.linie_deschisa(self.matr[69:97:9], jucator)
+                + self.linie_deschisa(self.matr[79:98:9], jucator)
+                )
 
     def estimeaza_scor(self, adancime):
         t_final = self.final()
@@ -406,10 +593,6 @@ class Joc:
             return self.linii_deschise(Joc.JMAX) - self.linii_deschise(Joc.JMIN)
 
     def __str__(self):
-        # sir = (" ".join([str(x) for x in self.matr[0:3]]) + "\n" +
-        #        " ".join([str(x) for x in self.matr[3:6]]) + "\n" +
-        #        " ".join([str(x) for x in self.matr[6:9]]) + "\n")
-
         sir = ""
 
         for i, element in enumerate(self.matr):
@@ -633,8 +816,6 @@ def main():
                     else:
                         print("Linie sau coloana invalida (trebuie sa fie unul dintre numerele 0,1,2,3,4,5,6,7,8,9).")
 
-                    # if
-
                 except ValueError:
                     print("Linia si coloana trebuie sa fie numere intregi")
 
@@ -668,6 +849,8 @@ def main():
             stare_curenta.tabla_joc = stare_actualizata.stare_aleasa.tabla_joc
             print("Tabla dupa mutarea calculatorului")
             print(str(stare_curenta))
+            print('Scorul lui x: ' + str(stare_curenta.tabla_joc.SCOR_X))
+            print('Scorul lui 0: ' + str(stare_curenta.tabla_joc.SCOR_0))
 
             # preiau timpul in milisecunde de dupa mutare
             t_dupa = int(round(time.time() * 1000))
