@@ -2,9 +2,279 @@ import time
 
 def check_position(matr, linie1, coloana1, linie2, coloana2):
     if abs(linie1 - linie2) <= 1 and abs(coloana1 - coloana2) <= 1 and abs(abs(coloana1 - coloana2) + abs(linie1 - linie2)) != 2:
-        checkX = False
-        check0 = False
+        check_X = False
+        check_0 = False
         # Cauta daca exista minim un X si un 0 pe langa placuta
+
+
+        # # Verific daca se afla pe prima linie
+        # if min(linie1, linie2) == 0:
+        #     # Verific daca cele doua elemente sunt pe aceeasi linie
+        #     if linie1 == linie2:
+        #         # Verific daca sunt primele de pe linie
+        #         if min(coloana1, coloana2) == 0 and max(coloana1, coloana2) == 1:
+        #             # Verific daca sub ele, pe diagonala sau in dreapta exista cel putin un X
+        #             if matr[11] == 'x' or matr[12] == 'x' or matr[13] == 'x' or matr[2] == 'x':
+        #                 check_X = True
+        #             # Verific daca sub ele, pe diagonala sau in dreapta exista cel putin un 0
+        #             if matr[11] == '0' or matr[12] == '0' or matr[13] == '0' or matr[2] == '0':
+        #                 check_0 = True
+        #             if check_X and check_0:
+        #                 return True
+        #         else:
+        #             # Verific daca in stanga, sub ele, pe diagonala sau in dreapta exista cel putin un X
+        #             if matr[linie1 * 10 + ]
+
+        # Verific daca sunt pe orizontala
+        if linie1 == linie2:
+            print("Sunt pe orizontala")
+            # Verific daca sunt pe prima linie
+            if linie1 == 0:
+                # Verific daca sunt in stanga de tot
+                if min(coloana1, coloana2) == 0:
+                    # Verific vecinii de dedesubtul, diagonala dreapta si dreapta placutei (daca cel putin unul este x)
+                    if matr[10] == 'x' or matr[11] == 'x' or matr[12] == 'x' or matr[2] == 'x':
+                        check_X = True
+                    
+                    # Verific vecinii de dedesubtul, diagonala dreapta si dreapta placutei (daca cel putin unul este 0)
+                    if matr[10] == '0' or matr[11] == '0' or matr[12] == '0' or matr[2] == '0':
+                        check_0 = True
+
+                    if check_X and check_0:
+                        return True
+
+                # Verific daca sunt in dreapta de tot
+                elif max(coloana1, coloana2) == 9:
+                    # Verific vecinii din stanga, dedesubtul placutei si diagonala stanga (daca cel putin unul este x)
+                    if matr[7] == 'x' or matr[18] == 'x' or matr[19] == 'x' or matr[17] == 'x':
+                        check_X = True
+                    
+                    # Verific vecinii din stanga, dedesubtul placutei si diagonala stanga (daca cel putin unul este 0)
+                    if matr[7] == '0' or matr[18] == '0' or matr[19] == '0' or matr[17] == '0':
+                        check_0 = True
+
+                    if check_X and check_0:
+                        return True
+                
+                else:
+                    # Verific vecinii: stanga, diagonala stanga, dedesubt, diagonala dreapta, dreapta daca e cel putin un x
+                    if matr[min(coloana1, coloana2) - 1] == 'x' or matr[10 + min(coloana1, coloana2) - 1] == 'x' or matr[10 + min(coloana1, coloana2)] == 'x' or matr[10 + max(coloana1, coloana2)] == 'x' or matr[10 + max(coloana1, coloana2) + 1] == 'x' or matr[max(coloana1, coloana2) + 1] == 'x':
+                        check_X == True
+
+                    # Verific vecinii: stanga, diagonala stanga, dedesubt, diagonala dreapta, dreapta daca e cel putin un 0
+                    if matr[min(coloana1, coloana2) - 1] == '0' or matr[10 + min(coloana1, coloana2) - 1] == '0' or matr[10 + min(coloana1, coloana2)] == '0' or matr[10 + max(coloana1, coloana2)] == '0' or matr[10 + max(coloana1, coloana2) + 1] == '0' or matr[max(coloana1, coloana2) + 1] == '0':
+                        check_0 == True
+
+                    if check_X and check_0:
+                        return True
+
+            # Verific daca sunt pe ultima linie
+            elif linie1 == 9:
+                # Verific daca sunt in stanga de tot
+                if min(coloana1, coloana2) == 0:
+                    # Verific vecinii de deasupra, diagonala dreapta si dreapta placutei (daca cel putin unul este x)
+                    if matr[80] == 'x' or matr[81] == 'x' or matr[82] == 'x' or matr[92] == 'x':
+                        check_X = True
+                    
+                    # Verific vecinii de deasupra, diagonala dreapta si dreapta placutei (daca cel putin unul este 0)
+                    if matr[80] == '0' or matr[81] == '0' or matr[82] == '0' or matr[92] == '0':
+                        check_0 = True
+
+                    if check_X and check_0:
+                        return True
+
+                # Verific daca sunt in dreapta de tot
+                elif max(coloana1, coloana2) == 9:
+                    # Verific vecinii din stanga, deasupra placutei si diagonala stanga (daca cel putin unul este x)
+                    if matr[97] == 'x' or matr[88] == 'x' or matr[89] == 'x' or matr[87] == 'x':
+                        check_X = True
+                    
+                    # Verific vecinii din stanga, deasupra placutei si diagonala stanga (daca cel putin unul este 0)
+                    if matr[97] == '0' or matr[88] == '0' or matr[89] == '0' or matr[87] == '0':
+                        check_0 = True
+
+                    if check_X and check_0:
+                        return True
+                
+                else:
+                    # Verific vecinii: stanga, diagonala stanga, dedesubt, diagonala dreapta, dreapta daca e cel putin un x
+                    if matr[90 + min(coloana1, coloana2) - 1] == 'x' or matr[80 + min(coloana1, coloana2) - 1] == 'x' or matr[80 + min(coloana1, coloana2)] == 'x' or matr[80 + max(coloana1, coloana2)] == 'x' or matr[80 + max(coloana1, coloana2) + 1] == 'x' or matr[90 + max(coloana1, coloana2) + 1] == 'x':
+                        check_X == True
+
+                    # Verific vecinii: stanga, diagonala stanga, dedesubt, diagonala dreapta, dreapta daca e cel putin un 0
+                    if matr[90 + min(coloana1, coloana2) - 1] == '0' or matr[80 + min(coloana1, coloana2) - 1] == '0' or matr[80 + min(coloana1, coloana2)] == '0' or matr[80 + max(coloana1, coloana2)] == '0' or matr[80 + max(coloana1, coloana2) + 1] == '0' or matr[90 + max(coloana1, coloana2) + 1] == '0':
+                        check_0 == True
+
+                    if check_X is True and check_0 is True:
+                        return True
+
+            # Daca sunt pe linii intermediare
+            else:
+                print("Sunt pe linii intermediare")
+                # Verific daca sunt in stanga de tot
+                if min(coloana1, coloana2) == 0:
+                    # Verific vecinii de deasupra, diagonala dreapta sus, dreapta, diagonala dreapta jos, dedesubtul placutei (daca cel putin unul este x)
+                    if matr[(linie1 - 1) * 10 + min(coloana1, coloana2)] == 'x' or matr[(linie1 - 1) * 10 + max(coloana1, coloana2)] == 'x' or matr[(linie1 - 1) * 10 + max(coloana1, coloana2) + 1] == 'x' or matr[linie1 * 10 + max(coloana1, coloana2) + 1] == 'x' or matr[(linie1 + 1) * 10 + max(coloana1, coloana2) + 1] == 'x' or matr[(linie1 + 1) * 10 + max(coloana1, coloana2)] == 'x' or matr[(linie1 + 1) * 10 + min(coloana1, coloana2)] == 'x':
+                        check_X = True
+                    
+                    # Verific vecinii de deasupra, diagonala dreapta sus, dreapta, diagonala dreapta jos, dedesubtul placutei (daca cel putin unul este 0)
+                    if matr[(linie1 - 1) * 10 + min(coloana1, coloana2)] == '0' or matr[(linie1 - 1) * 10 + max(coloana1, coloana2)] == '0' or matr[(linie1 - 1) * 10 + max(coloana1, coloana2) + 1] == '0' or matr[linie1 * 10 + max(coloana1, coloana2) + 1] == '0' or matr[(linie1 + 1) * 10 + max(coloana1, coloana2) + 1] == '0' or matr[(linie1 + 1) * 10 + max(coloana1, coloana2)] == '0' or matr[(linie1 + 1) * 10 + min(coloana1, coloana2)] == '0':
+                        check_0 = True
+
+                    if check_X and check_0:
+                        return True
+
+                # Verific daca sunt in dreapta de tot
+                elif max(coloana1, coloana2) == 9:
+                    # Verific vecinii din deasupra, diagonala stanga sus, stanga, diagonala stanga jos, dedesubt (daca cel putin unul este x)
+                    if matr[(linie1 - 1) * 10 + max(coloana1, coloana2)] == 'x' or matr[(linie1 - 1) * 10 + min(coloana1, coloana2)] == 'x' or matr[(linie1 - 1) * 10 + min(coloana1, coloana2) - 1] == 'x' or matr[(linie1) * 10 + min(coloana1, coloana2) - 1] == 'x' or matr[(linie1 + 1) * 10 + min(coloana1, coloana2) - 1] == 'x' or matr[(linie1 + 1) * 10 + min(coloana1, coloana2)] == 'x' or matr[(linie1 + 1) * 10 + max(coloana1, coloana2)] == 'x':
+                        check_X = True
+                    
+                    # Verific vecinii din stanga, deasupra placutei si diagonala stanga (daca cel putin unul este 0)
+                    if matr[(linie1 - 1) * 10 + max(coloana1, coloana2)] == '0' or matr[(linie1 - 1) * 10 + min(coloana1, coloana2)] == '0' or matr[(linie1 - 1) * 10 + min(coloana1, coloana2) - 1] == '0' or matr[(linie1) * 10 + min(coloana1, coloana2) - 1] == '0' or matr[(linie1 + 1) * 10 + min(coloana1, coloana2) - 1] == '0' or matr[(linie1 + 1) * 10 + min(coloana1, coloana2)] == '0' or matr[(linie1 + 1) * 10 + max(coloana1, coloana2)] == '0':
+                        check_0 = True
+
+                    if check_X and check_0:
+                        return True
+                
+                else:
+                    print("Sunt in mijlocul tablei")
+                    # Verific vecinii: stanga, diagonala stanga, dedesubt, diagonala dreapta, dreapta daca e cel putin un x
+                    if matr[linie1 * 10 + min(coloana1, coloana2) - 1] == 'x' or matr[(linie1 + 1) * 10 + min(coloana1, coloana2) - 1] == 'x' or matr[(linie1 + 1) * 10 + min(coloana1, coloana2)] == 'x' or matr[(linie1 + 1) * 10 + max(coloana1, coloana2)] == 'x' or matr[(linie1 + 1) * 10 + max(coloana1, coloana2) + 1] == 'x' or matr[linie1 * 10 + max(coloana1, coloana2) + 1] == 'x' or matr[(linie1 - 1) * 10 + max(coloana1, coloana2) + 1] == 'x' or matr[(linie1 - 1) * 10 + max(coloana1, coloana2)] == 'x' or matr[(linie1 - 1) * 10 + min(coloana1, coloana2)] == 'x' or matr[(linie1 - 1) * 10 + min(coloana1, coloana2) - 1] == 'x':
+                        check_X = True
+
+                    # Verific vecinii: stanga, diagonala stanga jos, dedesubt, diagonala dreapta jos, dreapta, diagonala dreapta sus, deasupra, diagonala stanga sus daca e cel putin un 0
+                    if matr[linie1 * 10 + min(coloana1, coloana2) - 1] == '0' or matr[(linie1 + 1) * 10 + min(coloana1, coloana2) - 1] == '0' or matr[(linie1 + 1) * 10 + min(coloana1, coloana2)] == '0' or matr[(linie1 + 1) * 10 + max(coloana1, coloana2)] == '0' or matr[(linie1 + 1) * 10 + max(coloana1, coloana2) + 1] == '0' or matr[linie1 * 10 + max(coloana1, coloana2) + 1] == '0' or matr[(linie1 - 1) * 10 + max(coloana1, coloana2) + 1] == '0' or matr[(linie1 - 1) * 10 + max(coloana1, coloana2)] == '0' or matr[(linie1 - 1) * 10 + min(coloana1, coloana2)] == '0' or matr[(linie1 - 1) * 10 + min(coloana1, coloana2) - 1] == '0':
+                        check_0 = True
+
+                    if check_X and check_0:
+                        return True
+        
+        # Verific daca sunt pe verticala
+        if coloana1 == coloana2:
+            # Verific daca sunt pe prima linie
+            if min(linie1, linie2) == 0:
+                # Verific daca sunt in stanga de tot
+                if min(coloana1, coloana2) == 0:
+                    # Verific vecinii de dedesubtul, diagonala dreapta si dreapta placutei (daca cel putin unul este x)
+                    if matr[20] == 'x' or matr[21] == 'x' or matr[2] == 'x' or matr[12] == 'x':
+                        check_X = True
+                    
+                    # Verific vecinii de dedesubtul, diagonala dreapta si dreapta placutei (daca cel putin unul este 0)
+                    if matr[20] == '0' or matr[21] == '0' or matr[2] == '0' or matr[12] == '0':
+                        check_0 = True
+
+                    if check_X and check_0:
+                        return True
+
+                # Verific daca sunt in dreapta de tot
+                elif max(coloana1, coloana2) == 9:
+                    # Verific vecinii din stanga, dedesubtul placutei si diagonala stanga (daca cel putin unul este x)
+                    if matr[8] == 'x' or matr[18] == 'x' or matr[29] == 'x' or matr[28] == 'x':
+                        check_X = True
+                    
+                    # Verific vecinii din stanga, dedesubtul placutei si diagonala stanga (daca cel putin unul este 0)
+                    if matr[8] == '0' or matr[18] == '0' or matr[29] == '0' or matr[28] == '0':
+                        check_0 = True
+
+                    if check_X and check_0:
+                        return True
+                
+                else:
+                    # Verific vecinii: stanga, diagonala stanga, dedesubt, diagonala dreapta, dreapta daca e cel putin un x
+                    if matr[min(coloana1, coloana2) - 1] == 'x' or matr[10 + min(coloana1, coloana2) - 1] == 'x' or matr[10 + min(coloana1, coloana2) - 1] == 'x' or matr[20 + coloana1 - 1] or matr[20 + min(coloana1, coloana2)] == 'x' or matr[20 + max(coloana1, coloana2) + 1] == 'x' or matr[max(coloana1, coloana2) + 1] == 'x' or matr[10 + max(coloana1, coloana2) + 1]:
+                        check_X = True
+
+                    # Verific vecinii: stanga, diagonala stanga, dedesubt, diagonala dreapta, dreapta daca e cel putin un 0
+                    if matr[min(coloana1, coloana2) - 1] == '0' or matr[10 + min(coloana1, coloana2) - 1] == '0' or matr[10 + min(coloana1, coloana2) - 1] == '0' or matr[20 + coloana1 - 1] or matr[20 + min(coloana1, coloana2)] == '0' or matr[20 + max(coloana1, coloana2) + 1] == '0' or matr[max(coloana1, coloana2) + 1] == '0' or matr[10 + max(coloana1, coloana2) + 1]:
+                        check_0 = True
+
+                    if check_X and check_0:
+                        return True
+
+            # Verific daca sunt pe ultima linie
+            elif max(linie1, linie2) == 9:
+                # Verific daca sunt in stanga de tot
+                if min(coloana1, coloana2) == 0:
+                    # Verific vecinii de deasupra, diagonala dreapta si dreapta placutei (daca cel putin unul este x)
+                    if matr[70] == 'x' or matr[71] == 'x' or matr[81] == 'x' or matr[91] == 'x':
+                        check_X = True
+                    
+                    # Verific vecinii de deasupra, diagonala dreapta si dreapta placutei (daca cel putin unul este 0)
+                    if matr[70] == '0' or matr[71] == '0' or matr[81] == '0' or matr[91] == '0':
+                        check_0 = True
+
+                    if check_X and check_0:
+                        return True
+
+                # Verific daca sunt in dreapta de tot
+                elif max(coloana1, coloana2) == 9:
+                    # Verific vecinii din stanga, deasupra placutei si diagonala stanga (daca cel putin unul este x)
+                    if matr[87] == 'x' or matr[97] == 'x' or matr[79] == 'x' or matr[78] == 'x':
+                        check_X = True
+                    
+                    # Verific vecinii din stanga, deasupra placutei si diagonala stanga (daca cel putin unul este 0)
+                    if matr[87] == '0' or matr[97] == '0' or matr[79] == '0' or matr[78] == '0':
+                        check_0 = True
+
+                    if check_X and check_0:
+                        return True
+                
+                else:
+                    # Verific vecinii: stanga, diagonala stanga, deasupra, diagonala dreapta, dreapta daca e cel putin un x
+                    if matr[90 + min(coloana1, coloana2) - 1] == 'x' or matr[80 + min(coloana1, coloana2) - 1] == 'x' or matr[70 + min(coloana1, coloana2) - 1] == 'x' or matr[70 + min(coloana1, coloana2)] == 'x' or matr[70 + max(coloana1, coloana2) + 1] == 'x' or matr[80 + max(coloana1, coloana2) + 1] == 'x' or matr[90 + max(coloana1, coloana2) + 1] == 'x':
+                        check_X = True
+
+                    # Verific vecinii: stanga, diagonala stanga, deasupra, diagonala dreapta, dreapta daca e cel putin un 0
+                    if matr[90 + min(coloana1, coloana2) - 1] == '0' or matr[80 + min(coloana1, coloana2) - 1] == '0' or matr[70 + min(coloana1, coloana2) - 1] == '0' or matr[70 + min(coloana1, coloana2)] == '0' or matr[70 + max(coloana1, coloana2) + 1] == '0' or matr[80 + max(coloana1, coloana2) + 1] == '0' or matr[90 + max(coloana1, coloana2) + 1] == '0':
+                        check_0 = True
+
+                    if check_X and check_0:
+                        return True
+
+            # Daca sunt pe linii intermediare
+            else:
+                # Verific daca sunt in stanga de tot
+                if min(coloana1, coloana2) == 0:
+                    # Verific vecinii de deasupra, diagonala dreapta sus, dreapta, diagonala dreapta jos, dedesubtul placutei (daca cel putin unul este x)
+                    if matr[(min(linie1, linie2) - 1) * 10 + min(coloana1, coloana2)] == 'x' or matr[(min(linie1, linie2) - 1) * 10 + max(coloana1, coloana2) + 1] == 'x' or matr[min(linie1, linie2) * 10 + max(coloana1, coloana2) + 1] == 'x' or matr[max(linie1, linie2) * 10 + max(coloana1, coloana2) + 1] == 'x' or matr[(max(linie1, linie2) + 1) * 10 + max(coloana1, coloana2) + 1] == 'x' or matr[(max(linie1, linie2) + 1) * 10 + max(coloana1, coloana2)] == 'x':
+                        check_X = True
+                    
+                    # Verific vecinii de deasupra, diagonala dreapta sus, dreapta, diagonala dreapta jos, dedesubtul placutei (daca cel putin unul este 0)
+                    if matr[(min(linie1, linie2) - 1) * 10 + min(coloana1, coloana2)] == '0' or matr[(min(linie1, linie2) - 1) * 10 + max(coloana1, coloana2) + 1] == '0' or matr[min(linie1, linie2) * 10 + max(coloana1, coloana2) + 1] == '0' or matr[max(linie1, linie2) * 10 + max(coloana1, coloana2) + 1] == '0' or matr[(max(linie1, linie2) + 1) * 10 + max(coloana1, coloana2) + 1] == '0' or matr[(max(linie1, linie2) + 1) * 10 + max(coloana1, coloana2)] == '0':
+                        check_0 = True
+
+                    if check_X and check_0:
+                        return True
+
+                # Verific daca sunt in dreapta de tot
+                elif max(coloana1, coloana2) == 9:
+                    # Verific vecinii din deasupra, diagonala stanga sus, stanga, diagonala stanga jos, dedesubt (daca cel putin unul este x)
+                    if matr[(min(linie1, linie2) - 1) * 10 + max(coloana1, coloana2)] == 'x' or matr[(min(linie1, linie2) - 1) * 10 + min(coloana1, coloana2) - 1] == 'x' or matr[(min(linie1, linie2)) * 10 + min(coloana1, coloana2) - 1] == 'x' or matr[max(linie1, linie2) * 10 + min(coloana1, coloana2) - 1] == 'x' or matr[(max(linie1, linie2) + 1) * 10 + min(coloana1, coloana2) - 1] == 'x' or matr[(max(linie1, linie2) + 1) * 10 + min(coloana1, coloana2)] == 'x':
+                        check_X = True
+                    
+                    # Verific vecinii din stanga, deasupra placutei si diagonala stanga (daca cel putin unul este 0)
+                    if matr[(min(linie1, linie2) - 1) * 10 + max(coloana1, coloana2)] == '0' or matr[(min(linie1, linie2) - 1) * 10 + min(coloana1, coloana2) - 1] == '0' or matr[(min(linie1, linie2)) * 10 + min(coloana1, coloana2) - 1] == '0' or matr[max(linie1, linie2) * 10 + min(coloana1, coloana2) - 1] == '0' or matr[(max(linie1, linie2) + 1) * 10 + min(coloana1, coloana2) - 1] == '0' or matr[(max(linie1, linie2) + 1) * 10 + min(coloana1, coloana2)] == '0':
+                        check_0 = True
+
+                    if check_X and check_0:
+                        return True
+                
+                else:
+                    # Verific vecinii: stanga, diagonala stanga, dedesubt, diagonala dreapta, dreapta daca e cel putin un x
+                    if matr[max(linie1, linie2) * 10 + min(coloana1, coloana2) - 1] == 'x' or matr[min(linie1, linie2) * 10 + min(coloana1, coloana2) - 1] == 'x' or matr[(min(linie1, linie2) - 1) * 10 + min(coloana1, coloana2) - 1] == 'x' or matr[(min(linie1, linie2) - 1) * 10 + max(coloana1, coloana2)] == 'x' or matr[(min(linie1, linie2) - 1) * 10 + max(coloana1, coloana2) + 1] == 'x' or matr[min(linie1, linie2) * 10 + max(coloana1, coloana2) + 1] == 'x' or matr[max(linie1, linie2) * 10 + max(coloana1, coloana2) + 1] == 'x' or matr[(max(linie1, linie2) + 1) * 10 + max(coloana1, coloana2) + 1] == 'x' or matr[(max(linie1, linie2) + 1) * 10 + min(coloana1, coloana2)] == 'x' or matr[(max(linie1, linie2) + 1) * 10 + min(coloana1, coloana2) - 1] == 'x':
+                        check_X = True
+
+                    # Verific vecinii: stanga, diagonala stanga jos, dedesubt, diagonala dreapta jos, dreapta, diagonala dreapta sus, deasupra, diagonala stanga sus daca e cel putin un 0
+                    if matr[max(linie1, linie2) * 10 + min(coloana1, coloana2) - 1] == '0' or matr[min(linie1, linie2) * 10 + min(coloana1, coloana2) - 1] == '0' or matr[(min(linie1, linie2) - 1) * 10 + min(coloana1, coloana2) - 1] == '0' or matr[(min(linie1, linie2) - 1) * 10 + max(coloana1, coloana2)] == '0' or matr[(min(linie1, linie2) - 1) * 10 + max(coloana1, coloana2) + 1] == '0' or matr[min(linie1, linie2) * 10 + max(coloana1, coloana2) + 1] == '0' or matr[max(linie1, linie2) * 10 + max(coloana1, coloana2) + 1] == '0' or matr[(max(linie1, linie2) + 1) * 10 + max(coloana1, coloana2) + 1] == '0' or matr[(max(linie1, linie2) + 1) * 10 + min(coloana1, coloana2)] == '0' or matr[(max(linie1, linie2) + 1) * 10 + min(coloana1, coloana2) - 1] == '0':
+                        check_0 = True
+
+                    if check_X and check_0:
+                        return True
+
+    else:
+        return False
+        
 
 def modif_joc(matr1, index, simbol):
     joc_generat = Joc()
@@ -350,13 +620,16 @@ def main():
                     coloana1 = int(input("coloana element 1 = "))
                     linie2 = int(input("linie element 2 = "))
                     coloana2 = int(input("coloana element 2 = "))
+                    positionCheck = False
 
                     if linie1 in range(0, 10) and coloana1 in range(0, 10) and linie2 in range(0, 10) and coloana2 in range(0, 10):
-                        if stare_curenta.tabla_joc.matr[linie1 * 10 + coloana1] == Joc.GOL and stare_curenta.tabla_joc.matr[linie2 * 10 + coloana2] == Joc.GOL and check_position(stare_curenta.tabla_joc.matr, linie1, coloana1, linie2, coloana2):
+                        positionCheck = check_position(stare_curenta.tabla_joc.matr, linie1, coloana1, linie2, coloana2)
+                        print(positionCheck)
+                        if stare_curenta.tabla_joc.matr[linie1 * 10 + coloana1] == Joc.GOL and stare_curenta.tabla_joc.matr[linie2 * 10 + coloana2] == Joc.GOL and positionCheck is True:
                             # implementeaza check_position() de sus
                             raspuns_valid = True
                         else:
-                            print("Exista deja un simbol in pozitia ceruta, nu ati pus simbolurile unul langa celalalt sau sunt pe diagonala.")
+                            print("Exista deja un simbol in pozitia ceruta, nu ati pus simbolurile unul langa celalalt, sunt pe diagonala sau nu le-ati pus langa minim un X si un 0.")
                     else:
                         print("Linie sau coloana invalida (trebuie sa fie unul dintre numerele 0,1,2,3,4,5,6,7,8,9).")
 
