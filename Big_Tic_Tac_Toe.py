@@ -1,5 +1,12 @@
 import time
 
+# Verifica daca 
+def check_exit(string):
+    if string == 'exit':
+        return True
+    return False
+
+# Verifica daca se poate plasa o placuta (daca nu el nu sunt pe diagonala si daca sunt langa minim un X si un 0)
 def check_position(matr, linie1, coloana1, linie2, coloana2):
     if abs(linie1 - linie2) <= 1 and abs(coloana1 - coloana2) <= 1 and abs(abs(coloana1 - coloana2) + abs(linie1 - linie2)) != 2:
         check_X = False
@@ -765,15 +772,16 @@ def main():
         else:
             print("Nu ati ales o varianta corecta.")
 
-    # initializare ADANCIME_MAX
+    # initializare ADANCIME_MAX in functie de dificultatea aleasa
     raspuns_valid = False
     while not raspuns_valid:
-        n = input("Adancime maxima a arborelui: ")
-        if n.isdigit():
-            Stare.ADANCIME_MAX = int(n)
+        dificultate = input("Selectati o dificultate\n 1. Usor\n 2. Mediu\n 3. Greu\n ")
+        if dificultate in ['1', '2', '3']:
             raspuns_valid = True
+            Stare.ADANCIME_MAX = int(dificultate)
+
         else:
-            print("Trebuie sa introduceti un numar natural nenul.")
+            print("Nu ati ales o varianta corecta.")       
 
     # initializare jucatori
     raspuns_valid = False
@@ -795,21 +803,44 @@ def main():
 
     while True:
         if stare_curenta.j_curent == Joc.JMIN:
+            # Cronometrez timpul de mutare al jucatorului
+            t_inainte_jucator = int(round(time.time() * 1000))
             # muta jucatorul
             raspuns_valid = False
             while not raspuns_valid:
                 try:
-                    linie1 = int(input("linie element 1 = "))
-                    coloana1 = int(input("coloana element 1 = "))
-                    linie2 = int(input("linie element 2 = "))
-                    coloana2 = int(input("coloana element 2 = "))
+                    linie1 = input("linie element 1 = ")
+                    if check_exit(linie1):
+                        print('Scorul lui x: ' + str(stare_curenta.tabla_joc.SCOR_X))
+                        print('Scorul lui 0: ' + str(stare_curenta.tabla_joc.SCOR_0))
+                        return
+                    coloana1 = input("coloana element 1 = ")
+                    if check_exit(coloana1):
+                        print('Scorul lui x: ' + str(stare_curenta.tabla_joc.SCOR_X))
+                        print('Scorul lui 0: ' + str(stare_curenta.tabla_joc.SCOR_0))
+                        return
+                    linie2 = input("linie element 2 = ")
+                    if check_exit(linie2):
+                        print('Scorul lui x: ' + str(stare_curenta.tabla_joc.SCOR_X))
+                        print('Scorul lui 0: ' + str(stare_curenta.tabla_joc.SCOR_0))
+                        return
+                    coloana2 = input("coloana element 2 = ")
+                    if check_exit(coloana2):
+                        print('Scorul lui x: ' + str(stare_curenta.tabla_joc.SCOR_X))
+                        print('Scorul lui 0: ' + str(stare_curenta.tabla_joc.SCOR_0))
+                        return
+
+                    linie1 = int(linie1)
+                    coloana1 = int(coloana1)
+                    linie2 = int(linie2)
+                    coloana2 = int(coloana2)
+
                     positionCheck = False
 
                     if linie1 in range(0, 10) and coloana1 in range(0, 10) and linie2 in range(0, 10) and coloana2 in range(0, 10):
+                        # Apelez position_check() pentru a vedea daca jucatorul a plasat piesele corespunzator
                         positionCheck = check_position(stare_curenta.tabla_joc.matr, linie1, coloana1, linie2, coloana2)
-                        print(positionCheck)
-                        if stare_curenta.tabla_joc.matr[linie1 * 10 + coloana1] == Joc.GOL and stare_curenta.tabla_joc.matr[linie2 * 10 + coloana2] == Joc.GOL and positionCheck is True:
-                            # implementeaza check_position() de sus
+                        if stare_curenta.tabla_joc.matr[linie1 * 10 + coloana1] == Joc.GOL and stare_curenta.tabla_joc.matr[linie2 * 10 + coloana2] == Joc.GOL and positionCheck:
                             raspuns_valid = True
                         else:
                             print("Exista deja un simbol in pozitia ceruta, nu ati pus simbolurile unul langa celalalt, sunt pe diagonala sau nu le-ati pus langa minim un X si un 0.")
@@ -830,18 +861,23 @@ def main():
 
             # testez daca jocul a ajuns intr-o stare finala
             # si afisez un mesaj corespunzator in caz ca da
+            # si afisez scorul
             if (afis_daca_final(stare_curenta)):
+                print('Scorul lui x: ' + str(stare_curenta.tabla_joc.SCOR_X))
+                print('Scorul lui 0: ' + str(stare_curenta.tabla_joc.SCOR_0))
                 break
 
             # S-a realizat o mutare. Schimb jucatorul cu cel opus
             stare_curenta.j_curent = stare_curenta.jucator_opus()
+
+            t_dupa_jucator = int(round(time.time() * 1000))
 
         # --------------------------------
         else:  # jucatorul e JMAX (calculatorul)
             # Mutare calculator
 
             # preiau timpul in milisecunde de dinainte de mutare
-            t_inainte = int(round(time.time() * 1000))
+            t_inainte_calculator = int(round(time.time() * 1000))
             if tip_algoritm == '1':
                 stare_actualizata = min_max(stare_curenta)
             else:  # tip_algoritm==2
@@ -853,10 +889,14 @@ def main():
             print('Scorul lui 0: ' + str(stare_curenta.tabla_joc.SCOR_0))
 
             # preiau timpul in milisecunde de dupa mutare
-            t_dupa = int(round(time.time() * 1000))
-            print("Calculatorul a \"gandit\" timp de " + str(t_dupa - t_inainte) + " milisecunde.")
-
+            t_dupa_calculator = int(round(time.time() * 1000))
+            
+            print("Jucatorul a gandit timp de " + str(t_dupa_jucator - t_inainte_jucator) + " milisecunde.")
+            print("Calculatorul a \"gandit\" timp de " + str(t_dupa_calculator - t_inainte_calculator) + " milisecunde.")
+            
             if (afis_daca_final(stare_curenta)):
+                print('Scorul lui x: ' + str(stare_curenta.tabla_joc.SCOR_X))
+                print('Scorul lui 0: ' + str(stare_curenta.tabla_joc.SCOR_0))
                 break
 
             # S-a realizat o mutare. Schimb jucatorul cu cel opus
